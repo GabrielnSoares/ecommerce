@@ -60,7 +60,7 @@ public class OrderService {
 
     private List<OrderItemEntity> validateOrderItems(OrderEntity order,
                                                      CreateOrderDto dto) {
-
+aaa
         if (dto.items().isEmpty()) {
             throw new CreateOrderException("order items is empty");
         }
