@@ -4,7 +4,6 @@ import br.gabnsoares.dev.ecommerce.controller.dto.CreateOrderDto;
 import br.gabnsoares.dev.ecommerce.controller.dto.OrderItemDto;
 import br.gabnsoares.dev.ecommerce.entities.*;
 import br.gabnsoares.dev.ecommerce.exception.CreateOrderException;
-import br.gabnsoares.dev.ecommerce.repository.OrderItemRepository;
 import br.gabnsoares.dev.ecommerce.repository.OrderRepository;
 import br.gabnsoares.dev.ecommerce.repository.ProductRepository;
 import br.gabnsoares.dev.ecommerce.repository.UserRepository;
@@ -60,7 +59,6 @@ public class OrderService {
 
     private List<OrderItemEntity> validateOrderItems(OrderEntity order,
                                                      CreateOrderDto dto) {
-aaa
         if (dto.items().isEmpty()) {
             throw new CreateOrderException("order items is empty");
         }
