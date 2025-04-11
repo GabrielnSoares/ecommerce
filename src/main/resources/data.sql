@@ -1,5 +1,5 @@
 -- tb_products
-INSERT INTO tb_products (product_id, product_name, price)
+INSERT INTO products (product_id, product_name, price)
     VALUES
         (1, 'Computer', 4500.50),
         (2, 'Smartphone', 2000.00),
@@ -22,3 +22,5 @@ INSERT INTO tb_product_tags (product_id, tag_id)
         (2, 1),
         (3, 1)
     ON CONFLICT (product_id, tag_id) DO NOTHING;
+
+

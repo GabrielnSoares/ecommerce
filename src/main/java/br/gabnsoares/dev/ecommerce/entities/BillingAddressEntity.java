@@ -20,18 +20,10 @@ public class BillingAddressEntity {
     @Column(name = "complement")
     private String complement;
 
-   // @OneToOne(mappedBy = "billingAddress")
-   // private UserEntity user;
+//    @OneToOne(mappedBy = "billingAddress")
+//    private UserEntity user;
 
     public BillingAddressEntity() {
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public Long getBillingAddressId() {
@@ -40,6 +32,14 @@ public class BillingAddressEntity {
 
     public void setBillingAddressId(Long billingAddressId) {
         this.billingAddressId = billingAddressId;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getNumber() {

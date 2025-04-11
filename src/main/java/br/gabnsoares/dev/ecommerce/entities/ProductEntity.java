@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
-@Table(name = "tb_products")
+@Table(name = "products")
 public class ProductEntity {
 
     @Id
@@ -22,11 +22,10 @@ public class ProductEntity {
 
     @ManyToMany
     @JoinTable(
-            name = "tb_product_tags",
+            name =  "tb_products_tags",
             uniqueConstraints = @UniqueConstraint(columnNames = {"product_id", "tag_id"}),
-            joinColumns = @JoinColumn(name = "product_id"), // coluna referência 1]
+            joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id")
-
     )
     private List<TagEntity> tags;
 

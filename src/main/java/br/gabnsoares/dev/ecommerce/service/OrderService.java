@@ -31,58 +31,58 @@ public class OrderService {
     public OrderEntity createOrder(CreateOrderDto dto) {
 
         var order = new OrderEntity();
-        // 1 validar user
+
+        // 1. Validate User
         var user = validateUser(dto);
 
-        // 2 validar order items
+        // 2. Validate Order Items
         var orderItems = validateOrderItems(order, dto);
 
-        // 3 calcular order total
-        var total = calculateOrderTotal(orderItems);
+        // 3. Calculate order total
+        var total =  calculateOrderTotal(orderItems);
 
-        // 4 mapear para entidade
+        // 4. Map to Entity
         order.setOrderDate(LocalDateTime.now());
         order.setUser(user);
         order.setItems(orderItems);
         order.setTotal(total);
 
-        // 5 salvar no repository
+        // 5. Repository save
         return orderRepository.save(order);
-
     }
 
     private UserEntity validateUser(CreateOrderDto dto) {
-
-       return userRepository.findById(dto.userId())
+        return userRepository.findById(dto.userId())
                 .orElseThrow(() -> new CreateOrderException("user not found"));
     }
 
     private List<OrderItemEntity> validateOrderItems(OrderEntity order,
                                                      CreateOrderDto dto) {
+
         if (dto.items().isEmpty()) {
             throw new CreateOrderException("order items is empty");
         }
 
         return dto.items()
                 .stream()
-                .map(orderItemDto -> getOrderItem(order, orderItemDto))
+                .map(ordemItemDto -> getOrderItem(order, ordemItemDto))
                 .toList();
+
     }
 
     private OrderItemEntity getOrderItem(OrderEntity order,
-                                         OrderItemDto orderItemDto) {
+                                         OrderItemDto ordemItemDto) {
+
         var orderItemEntity = new OrderItemEntity();
         var id = new OrderItemId();
-        var product = getProduct(orderItemDto.productId());
-
+        var product = getProduct(ordemItemDto.productId());
 
         id.setOrder(order);
         id.setProduct(product);
 
         orderItemEntity.setId(id);
-        orderItemEntity.setQuantity(orderItemDto.quantity());
+        orderItemEntity.setQuantity(ordemItemDto.quantity());
         orderItemEntity.setSalePrice(product.getPrice());
-
 
         return orderItemEntity;
     }
@@ -99,3 +99,4 @@ public class OrderService {
                 .orElse(BigDecimal.ZERO);
     }
 }
+

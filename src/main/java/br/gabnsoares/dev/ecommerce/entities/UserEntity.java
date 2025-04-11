@@ -9,11 +9,11 @@ import java.util.UUID;
 public class UserEntity {
 
     @Id
-    @Column
+    @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID userId;
 
-    @Column(name = "full-name")
+    @Column(name = "full_name")
     private String fullName;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

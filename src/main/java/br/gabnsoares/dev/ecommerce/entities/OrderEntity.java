@@ -16,7 +16,7 @@ public class OrderEntity {
     private Long orderId;
 
     @Column(name = "total")
-    private BigDecimal total; // VALORES FINANCEIRO
+    private BigDecimal total;
 
     @Column(name = "order_date")
     private LocalDateTime orderDate;
